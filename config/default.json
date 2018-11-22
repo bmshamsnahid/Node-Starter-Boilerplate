@@ -1,0 +1,5 @@
+{
+    "jwtPrivateKey": "Slim Shady",
+    "db": "mongodb://localhost/reserva",
+    "sessionTime": 600000
+}
