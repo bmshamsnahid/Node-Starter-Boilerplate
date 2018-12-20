@@ -10,15 +10,15 @@ const adminRouter = require('../router/adminRouter/adminResourceInfo');
 const ownerRouter = require('../router/ownerRouter/ownerResourceInfo');
 
 module.exports = (app) => {
-    app.use(express.json());
-    app.use(bodyParser.json({ extended: false }));
-    app.use(morgan('dev'));
+  app.use(express.json());
+  app.use(bodyParser.json({ extended: false }));
+  app.use(morgan('dev'));
 
-    app.use('/api/authentication', authenticationRouter);
+  app.use('/api/authentication', authenticationRouter);
 
-    app.use('/api/superAdminTest', superAdminRouter);
-    app.use('/api/adminTest', adminRouter);
-    app.use('/api/ownerTest', ownerRouter);
+  app.use('/api/superAdminTest', superAdminRouter);
+  app.use('/api/adminTest', adminRouter);
+  app.use('/api/ownerTest', ownerRouter);
 
-    app.use(error);
+  app.use(error);
 };

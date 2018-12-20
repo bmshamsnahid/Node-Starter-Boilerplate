@@ -1,4 +1,7 @@
-module.exports = (err, req, res, next) => {
-    console.log (new Error(err.message));
-    return res.status(500).send('Internal server error.');
+module.exports = (err, req, res) => {
+  const error = {
+    message: err.message,
+    track: err,
+  };
+  return res.status(500).json({ success: false, message: 'Internal server error.', data: error });
 };

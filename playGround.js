@@ -4,14 +4,13 @@ const { BotInfo } = require('./model/bot/botInfo');
 const message = 'a';
 
 const findFlow = async (message) => {
-    console.log('In method');
-    const myFlow = await FlowInfo.findOne({
+    let myFlow = await FlowInfo.findOne({
         triggerKeyword: { 
             $in: [message]
-         }
+            }
     });
 
-    const myFlow = await BotInfo.find();
+    myFlow = await BotInfo.find();
 
     consoele.log('Flow: ');
     console.log(myFlow);

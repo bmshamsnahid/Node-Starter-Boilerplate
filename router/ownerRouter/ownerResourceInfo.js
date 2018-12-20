@@ -1,4 +1,5 @@
 const express = require('express');
+
 const router = express.Router();
 const ownerResourceController = require('../../controller/ownerResource/ownerResourceInfo');
 const auth = require('../../middleware/auth');

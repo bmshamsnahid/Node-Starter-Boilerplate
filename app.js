@@ -1,6 +1,6 @@
 const express = require('express');
 
-var app = express();
+const app = express();
 app.set('port', process.env.PORT || 8080);
 
 app.set('view engine', 'ejs'); // setting a local view engine
@@ -23,8 +23,8 @@ require('./startup/db')();
 
 // Start server
 // Webhooks must be available via SSL with a certificate signed by a valid certificate authority.
-app.listen(app.get('port'), function() {
-    console.log('App is running on port ' + app.get('port'));
+app.listen(app.get('port'), () => {
+  // console.log running the port on port
 });
 
 module.exports = app;
