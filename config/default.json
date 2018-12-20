@@ -1,5 +1,6 @@
 {
     "jwtPrivateKey": "Slim Shady",
-    "db": "mongodb://localhost/reserva",
-    "sessionTime": 600000
+    "dbAddress": "mongodb://localhost/boilerplate",
+    "sessionTime": 600000,
+    "port": 8080
 }

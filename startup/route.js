@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const error = require('../middleware/error');
+const logger = require('../helper/logger');
 
 const authenticationRouter = require('../router/auth/authentication');
 
@@ -12,7 +13,8 @@ const ownerRouter = require('../router/ownerRouter/ownerResourceInfo');
 module.exports = (app) => {
   app.use(express.json());
   app.use(bodyParser.json({ extended: false }));
-  app.use(morgan('dev'));
+  app.use(morgan('tiny', { stream: logger.stream }));
+  // app.use(morgan('dev'));
 
   app.use('/api/authentication', authenticationRouter);
 

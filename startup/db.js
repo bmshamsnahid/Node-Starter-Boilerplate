@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 const config = require('config');
+require('dotenv').config();
 
-const uri = config.get('db');
+const logger = require('../helper/logger');
+
+const uri = process.env.dbAddress || config.get('dbAddress');
 
 const options = {
   useNewUrlParser: true,
@@ -18,5 +21,5 @@ const options = {
 
 module.exports = () => {
   mongoose.connect(uri, options)
-    .then(() => {});
+    .then(() => { logger.info(`Connected to database ${uri}`); });
 };

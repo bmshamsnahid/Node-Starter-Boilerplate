@@ -1,15 +1,16 @@
 const express = require('express');
 
 const app = express();
-app.set('port', process.env.PORT || 8080);
+require('dotenv').config();
+const config = require('config');
 
 app.set('view engine', 'ejs'); // setting a local view engine
 app.use(express.static('public')); // defining a static directory
 
 require('express-async-errors');
-
 require('dotenv').config();
-// console.log('DB_ADDRESS: ' + process.env.db);
+
+const logger = require('./helper/logger');
 
 /*
  * Be sure to setup your config values before running this code. You can
@@ -21,10 +22,14 @@ require('./startup/validation')();
 require('./startup/route')(app);
 require('./startup/db')();
 
+// if we have to set port from system
+// app.set('port', process.env.PORT || 8080);
+const port = process.env.port || config.get('port') || app.get('port');
+
 // Start server
 // Webhooks must be available via SSL with a certificate signed by a valid certificate authority.
-app.listen(app.get('port'), () => {
-  // console.log running the port on port
+app.listen(port, () => {
+  logger.info(`App is running on port: ${port}`);
 });
 
 module.exports = app;
